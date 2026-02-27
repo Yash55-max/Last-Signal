@@ -1,0 +1,137 @@
+📄 UPDATED PRODUCT REQUIREMENTS DOCUMENT (PRD)
+1. Product Overview
+
+Product Name: Last Signal
+Platform: Android (Native – Kotlin)
+Category: Behavioral-triggered anonymous social app
+Release Type: Android Beta (Play Store Internal Testing)
+
+2. Product Objective
+
+To build a native Android application that enables emotionally contextual, time-bound anonymous conversations triggered by device state conditions.
+
+3. Target Audience
+
+College students
+
+Late-night phone users
+
+Digital natives (18–28 years)
+
+Users curious about experimental social platforms
+
+4. Core Modes (MVP – Android Native)
+🔋 Mode 1: Low Battery Mode (<7%)
+
+Trigger:
+
+Automatically activated when battery ≤ 7%
+
+Features:
+
+Anonymous 1:1 chat
+
+60-second session
+
+Real-time countdown
+
+Sentiment-based matching
+
+Session auto-delete after completion
+
+🌙 Mode 2: Midnight Mode (12 AM – 2 AM)
+
+Trigger:
+
+Device system time between 00:00–02:00
+
+Features:
+
+3-minute anonymous chat
+
+Sentiment similarity matching
+
+Text-only interaction
+
+No message history storage
+
+5. Functional Requirements
+FR1 – Android Native Authentication
+
+Firebase Google Sign-in
+
+Unique anonymous display ID
+
+Secure token handling
+
+FR2 – Device State Monitoring
+
+The app must:
+
+Detect battery percentage using Android BatteryManager
+
+Monitor battery state changes via BroadcastReceiver
+
+Detect system time dynamically
+
+FR3 – Mode Activation Logic
+
+Auto-activate UI screen when trigger conditions met
+
+Prevent manual activation
+
+Allow graceful fallback if no match available
+
+FR4 – Matching Engine
+
+First message classified via backend ML model
+
+User added to sentiment queue bucket
+
+Matched based on mode logic:
+
+Low Battery → Complementary sentiment
+
+Midnight → Similar sentiment
+
+FR5 – Chat Session
+
+Real-time message sync (Firestore listener)
+
+Timer-based session
+
+Session auto-terminate
+
+No persistent message storage
+
+FR6 – Safety & Moderation
+
+Toxicity filtering via backend
+
+Auto-block if threshold exceeded
+
+Rate limiting (spam prevention)
+
+6. Non-Functional Requirements
+
+App startup time < 3 seconds
+
+Matchmaking latency < 2 seconds
+
+Encrypted HTTPS communication
+
+Crash-free rate > 95%
+
+Supports Android 8.0+
+
+7. Out of Scope (MVP)
+
+Media sharing
+
+Voice chat
+
+Profile customization
+
+Ads/Monetization
+
+iOS support

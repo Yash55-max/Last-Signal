@@ -1,0 +1,135 @@
+📄 UPDATED TECHNICAL REQUIREMENTS DOCUMENT (TRD)
+1. High-Level Architecture
+
+Android App (Kotlin – MVVM)
+↓
+Firebase Authentication
+↓
+Firestore (Real-time DB)
+↓
+Firebase Cloud Functions
+↓
+ML Sentiment & Toxicity Classifier
+
+2. Android App Architecture
+Pattern: MVVM
+
+View → Jetpack Compose UI
+
+ViewModel → State handling, timer logic
+
+Repository → Firestore + API interaction
+
+3. Technology Stack
+Mobile App
+
+Kotlin
+
+Jetpack Compose
+
+Android SDK
+
+MVVM Architecture
+
+Coroutines + Flow
+
+Backend
+
+Firebase Authentication
+
+Firestore
+
+Firebase Cloud Functions (Node.js)
+
+ML Layer
+
+HuggingFace DistilBERT (Sentiment)
+
+Optional lightweight toxicity model
+
+Hosted inside Cloud Function
+
+4. Android-Specific Implementation Details
+🔋 Battery Detection
+
+Use:
+
+BatteryManager
+
+BroadcastReceiver for ACTION_BATTERY_CHANGED
+
+Logic:
+
+if (batteryPercentage <= 7) {
+    activateLowBatteryMode()
+}
+🌙 Midnight Detection
+
+Use:
+
+LocalTime.now()
+
+Coroutine periodic check OR lifecycle-based check
+
+🔄 Real-Time Chat
+
+Use:
+
+Firestore collection: active_sessions
+
+SnapshotListener for real-time updates
+
+Coroutines for async handling
+
+5. Database Schema (Firestore)
+Users
+user_id
+created_at
+last_active
+device_state
+MatchingQueue
+user_id
+sentiment
+mode
+timestamp
+ActiveSessions
+session_id
+user_1
+user_2
+mode
+start_time
+end_time
+status
+
+(No message persistence collection for MVP)
+
+6. Matching Algorithm (Cloud Function)
+
+Receive initial message
+
+Run sentiment classifier
+
+Assign sentiment label
+
+Check queue for compatible user
+
+If found:
+
+Create session
+
+Notify both users
+
+If not:
+
+Add user to queue
+
+7. Security Design
+
+Firebase Auth token validation
+
+No permanent chat storage
+
+Rate limiting per user
+
+Abuse auto-termination
+
