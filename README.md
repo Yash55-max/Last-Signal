@@ -88,7 +88,7 @@ This project demonstrates:
 
 ### Connecting
 
-![Connecting](pages/initializing%20conection.png)
+<img width="1919" height="955" alt="image" src="https://github.com/user-attachments/assets/adb76824-cabb-48c6-8328-c9f79ac8b0fd" />
 
 ### Chat
 
@@ -96,7 +96,7 @@ This project demonstrates:
 
 ### Session Timer
 
-![Timer](pages/timer.png)
+
 
 ### Disconnect
 
