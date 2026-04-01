@@ -32,7 +32,7 @@ The app is implemented as a React + Vite Progressive Web App with Firebase Auth,
 
 Important: Last Signal is a peer-connection product and not a replacement for professional mental health care.
 
-## Recruiter Snapshot
+## Project Snapshot
 
 This project demonstrates:
 - Product thinking: a clear behavioral concept translated into interaction design
@@ -40,21 +40,6 @@ This project demonstrates:
 - Real-time systems work: transactional matchmaking and live Firestore listeners
 - Reliability mindset: session expiry, room cleanup, queue cancellation, and reconnection handling
 - Engineering discipline: modular architecture, unit tests, linting, and analytics instrumentation
-
-## Role Fit
-
-Strong evidence for:
-- Frontend Engineer roles focused on UX quality, state architecture, and performance-aware interaction design
-- Full Stack Engineer roles involving realtime data flows, Firebase-backed systems, and product-led delivery
-- Product Engineer roles that require translating ambiguous ideas into shippable MVPs
-
-## Portfolio Highlights
-
-- Designed and shipped a complete multi-screen user journey from onboarding to timed disconnect.
-- Implemented transactional matchmaking with Firestore queue state isolation by signal mode.
-- Built resilient session handling with room expiry, reconnection awareness, and participant presence metadata.
-- Added analytics instrumentation for key funnel and chat lifecycle events.
-- Wrote focused unit tests for core state and utility modules.
 
 ## Key Features
 
@@ -103,7 +88,7 @@ Strong evidence for:
 
 ### Connecting
 
-![Connecting](pages/initializing%20conection.png)
+<img width="1919" height="955" alt="image" src="https://github.com/user-attachments/assets/adb76824-cabb-48c6-8328-c9f79ac8b0fd" />
 
 ### Chat
 
@@ -111,19 +96,24 @@ Strong evidence for:
 
 ### Session Timer
 
-![Timer](pages/timer.png)
+![Session Timer](pages/timer.png)
 
 ### Disconnect
 
 ![Disconnect](pages/connection%20disconneect.png)
 
+### Low Battery 
+<img width="1919" height="965" alt="image" src="https://github.com/user-attachments/assets/a6524e13-528b-4de6-8e1d-5f43dafae289" />
+<img width="1918" height="966" alt="image" src="https://github.com/user-attachments/assets/72e5e5e6-58ad-4a11-817b-0a34ec56ce15" />
+<img width="1919" height="956" alt="image" src="https://github.com/user-attachments/assets/53fee14e-4492-4693-aab6-f971a26c14ce" />
+
 ## Quick Demo GIF
 
 ![Quick Demo](pages/demo.gif)
 
-This quick-loop demo gives recruiters a fast visual pass before opening the app locally.
+### Shared Chat
+<img width="512" height="679" alt="image" src="https://github.com/user-attachments/assets/1f6b3f0c-e90a-4f1e-843c-d9305261a008" />
 
-Tip: replace pages/demo.gif with a short multi-screen recording for a stronger portfolio first impression.
 
 ## Tech Stack
 
@@ -191,14 +181,6 @@ Unit tests currently cover:
 - Signal mode utilities
 - Moderation and session history helpers
 - Username generator behavior
-
-## What This Project Shows About The Engineer
-
-- Ability to take a product concept and ship a cohesive MVP
-- Comfort with realtime architecture and eventual consistency concerns
-- Strong attention to UX polish under technical constraints
-- Practical use of observability (analytics + debug buffers)
-- Clean separation of concerns across hooks, screens, and shared libs
 
 ## Roadmap
 
