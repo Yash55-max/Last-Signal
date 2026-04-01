@@ -96,7 +96,7 @@ This project demonstrates:
 
 ### Session Timer
 
-
+![Session Timer](pages/timer.png)
 
 ### Disconnect
 
