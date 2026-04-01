@@ -1,26 +1,39 @@
 /* eslint-disable no-undef */
-importScripts('https://www.gstatic.com/firebasejs/12.10.0/firebase-app-compat.js')
-importScripts('https://www.gstatic.com/firebasejs/12.10.0/firebase-messaging-compat.js')
 
-firebase.initializeApp({
-  apiKey: 'AIzaSyCQJDbk1iCP1lCDxwbGuSu9EaeK26zfWG0',
-  authDomain: 'last-signal-605b1.firebaseapp.com',
-  projectId: 'last-signal-605b1',
-  storageBucket: 'last-signal-605b1.firebasestorage.app',
-  messagingSenderId: '472315684675',
-  appId: '1:472315684675:web:b4895cb80f8060fcb5f1f6',
-})
+/**
+ * Firebase Cloud Messaging Service Worker
+ *
+ * For contributors / local development:
+ * Firebase config is injected into this service worker at build time by Vite
+ * via the vite.config.js `injectFirebaseConfig` plugin. You do NOT need to
+ * edit this file manually. Just fill in your .env file (copy from .env.example).
+ *
+ * The self.__FIREBASE_CONFIG__ object is replaced during `npm run build`.
+ * In development, the SW reads from the injected config automatically.
+ */
 
-const messaging = firebase.messaging()
+importScripts('https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js')
+importScripts('https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js')
 
-messaging.onBackgroundMessage((payload) => {
-  const title = payload?.notification?.title || 'Last Signal'
-  const options = {
-    body: payload?.notification?.body || 'A new signal is waiting.',
-    icon: '/logo-192.png',
-    badge: '/favicon.png',
-    tag: 'last-signal-background',
-  }
+// Config injected by Vite at build time — see vite.config.js
+const config = self.__FIREBASE_CONFIG__ || {}
 
-  self.registration.showNotification(title, options)
-})
+if (config.apiKey) {
+  firebase.initializeApp(config)
+
+  const messaging = firebase.messaging()
+
+  messaging.onBackgroundMessage((payload) => {
+    const title = payload?.notification?.title || 'Last Signal'
+    const options = {
+      body: payload?.notification?.body || 'A new signal is waiting.',
+      icon: '/logo-192.png',
+      badge: '/favicon.png',
+      tag: 'last-signal-background',
+    }
+
+    self.registration.showNotification(title, options)
+  })
+} else {
+  console.warn('[firebase-messaging-sw] Firebase config not found. Push notifications will not work.')
+}
