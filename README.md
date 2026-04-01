@@ -102,9 +102,18 @@ This project demonstrates:
 
 ![Disconnect](pages/connection%20disconneect.png)
 
+### Low Battery 
+<img width="1919" height="965" alt="image" src="https://github.com/user-attachments/assets/a6524e13-528b-4de6-8e1d-5f43dafae289" />
+<img width="1918" height="966" alt="image" src="https://github.com/user-attachments/assets/72e5e5e6-58ad-4a11-817b-0a34ec56ce15" />
+<img width="1919" height="956" alt="image" src="https://github.com/user-attachments/assets/53fee14e-4492-4693-aab6-f971a26c14ce" />
+
 ## Quick Demo GIF
 
 ![Quick Demo](pages/demo.gif)
+
+### Shared Chat
+<img width="512" height="679" alt="image" src="https://github.com/user-attachments/assets/1f6b3f0c-e90a-4f1e-843c-d9305261a008" />
+
 
 ## Tech Stack
 
