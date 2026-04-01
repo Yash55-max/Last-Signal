@@ -1,137 +1,52 @@
-📄 UPDATED PRODUCT REQUIREMENTS DOCUMENT (PRD)
 1. Product Overview
 
-Product Name: Last Signal
-Platform: Android (Native – Kotlin)
-Category: Behavioral-triggered anonymous social app
-Release Type: Android Beta (Play Store Internal Testing)
+Product Name: Last Signal (Web Edition)
+Platform: Web App + Progressive Web App
+Access: Browser-based, installable as PWA
+Target Users: Students & digital natives
 
-2. Product Objective
+2. Core Concept (Web Adaptation)
 
-To build a native Android application that enables emotionally contextual, time-bound anonymous conversations triggered by device state conditions.
+Since web cannot detect battery reliably across all browsers, we adapt:
 
-3. Target Audience
+🔋 Low Battery Mode (If Browser Battery API Available)
 
-College students
+Uses Navigator Battery API (if supported)
 
-Late-night phone users
+Activates when battery ≤ 7%
 
-Digital natives (18–28 years)
+Fallback:
 
-Users curious about experimental social platforms
+Manual “Low Signal Mode” button
 
-4. Core Modes (MVP – Android Native)
-🔋 Mode 1: Low Battery Mode (<7%)
+🌙 Midnight Mode
 
-Trigger:
+Automatically activates between 12:00–2:00 AM (user local time)
 
-Automatically activated when battery ≤ 7%
+Based on browser time
 
-Features:
+3. Core Features (MVP)
 
-Anonymous 1:1 chat
-
-60-second session
-
-Real-time countdown
+Anonymous login (Firebase Auth)
 
 Sentiment-based matching
 
-Session auto-delete after completion
+Real-time 1:1 chat
 
-🌙 Mode 2: Midnight Mode (12 AM – 2 AM)
+Timer-based session expiration
 
-Trigger:
+No message persistence
 
-Device system time between 00:00–02:00
+Installable as PWA
 
-Features:
+Mobile-friendly UI
 
-3-minute anonymous chat
+4. Success Metrics
 
-Sentiment similarity matching
+Session completion rate
 
-Text-only interaction
+Daily midnight sessions
 
-No message history storage
+Matching latency < 2s
 
-5. Functional Requirements
-FR1 – Android Native Authentication
-
-Firebase Google Sign-in
-
-Unique anonymous display ID
-
-Secure token handling
-
-FR2 – Device State Monitoring
-
-The app must:
-
-Detect battery percentage using Android BatteryManager
-
-Monitor battery state changes via BroadcastReceiver
-
-Detect system time dynamically
-
-FR3 – Mode Activation Logic
-
-Auto-activate UI screen when trigger conditions met
-
-Prevent manual activation
-
-Allow graceful fallback if no match available
-
-FR4 – Matching Engine
-
-First message classified via backend ML model
-
-User added to sentiment queue bucket
-
-Matched based on mode logic:
-
-Low Battery → Complementary sentiment
-
-Midnight → Similar sentiment
-
-FR5 – Chat Session
-
-Real-time message sync (Firestore listener)
-
-Timer-based session
-
-Session auto-terminate
-
-No persistent message storage
-
-FR6 – Safety & Moderation
-
-Toxicity filtering via backend
-
-Auto-block if threshold exceeded
-
-Rate limiting (spam prevention)
-
-6. Non-Functional Requirements
-
-App startup time < 3 seconds
-
-Matchmaking latency < 2 seconds
-
-Encrypted HTTPS communication
-
-Crash-free rate > 95%
-
-Supports Android 8.0+
-
-7. Out of Scope (MVP)
-
-Media sharing
-
-Voice chat
-
-Profile customization
-
-Ads/Monetization
-
-iOS support
+Mobile usage %

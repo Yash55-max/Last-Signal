@@ -1,45 +1,36 @@
-# Built application files
-*.apk
-*.aar
-*.ap_
-*.aab
+# Dependencies
+node_modules/
 
-# Files for the ART/Dalvik VM
-*.dex
-
-# Java class files
-*.class
-
-# Generated files
-bin/
-gen/
-out/
-release/
-
-# Gradle files
-.gradle/
+# Build outputs
+dist/
 build/
+dev-dist/
 
-# Local configuration file (sdk path, etc)
-local.properties
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# IntelliJ IDEA
-.idea/
-*.iml
-*.iws
-*.ipr
+# Environment files
+.env
+.env.*
+!.env.example
+!.env.sample
 
-# OS-specific files
+# Misc
 .DS_Store
-Thumbs.db
+*.local
 
-# Captures
-captures/
-
-# Keystore files
-*.jks
-*.keystore
-
-# External native build folder
-.cxx/
-.externalNativeBuild/
+# Editor
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

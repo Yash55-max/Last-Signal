@@ -1,135 +1,65 @@
-📄 UPDATED TECHNICAL REQUIREMENTS DOCUMENT (TRD)
-1. High-Level Architecture
+1. Tech Stack
+Frontend
 
-Android App (Kotlin – MVVM)
-↓
-Firebase Authentication
-↓
-Firestore (Real-time DB)
-↓
-Firebase Cloud Functions
-↓
-ML Sentiment & Toxicity Classifier
+Next.js OR Vite + React
 
-2. Android App Architecture
-Pattern: MVVM
+Tailwind CSS
 
-View → Jetpack Compose UI
+Service Worker (PWA)
 
-ViewModel → State handling, timer logic
-
-Repository → Firestore + API interaction
-
-3. Technology Stack
-Mobile App
-
-Kotlin
-
-Jetpack Compose
-
-Android SDK
-
-MVVM Architecture
-
-Coroutines + Flow
+Firebase SDK
 
 Backend
 
 Firebase Authentication
 
-Firestore
+Firestore (real-time DB)
 
-Firebase Cloud Functions (Node.js)
+Firebase Cloud Functions
 
 ML Layer
 
-HuggingFace DistilBERT (Sentiment)
+HuggingFace model in Cloud Function
+OR
 
-Optional lightweight toxicity model
+Simple sentiment API (faster MVP)
 
-Hosted inside Cloud Function
+2. Architecture
 
-4. Android-Specific Implementation Details
-🔋 Battery Detection
+Client (React PWA)
+↓
+Firebase Auth
+↓
+Firestore
+↓
+Cloud Function (Matching + Sentiment)
+↓
+Session Created
 
-Use:
+3. Matching Flow
 
-BatteryManager
+User enters initial message
 
-BroadcastReceiver for ACTION_BATTERY_CHANGED
+Message sent to Cloud Function
 
-Logic:
+Sentiment classified
 
-if (batteryPercentage <= 7) {
-    activateLowBatteryMode()
-}
-🌙 Midnight Detection
+User placed in sentiment queue
 
-Use:
+Match created if compatible user exists
 
-LocalTime.now()
+Timer starts (60s or 3min)
 
-Coroutine periodic check OR lifecycle-based check
+Session auto-deletes
 
-🔄 Real-Time Chat
+4. PWA Features
 
-Use:
+Manifest.json
 
-Firestore collection: active_sessions
+Install prompt
 
-SnapshotListener for real-time updates
+Service Worker
 
-Coroutines for async handling
+Offline fallback page
 
-5. Database Schema (Firestore)
-Users
-user_id
-created_at
-last_active
-device_state
-MatchingQueue
-user_id
-sentiment
-mode
-timestamp
-ActiveSessions
-session_id
-user_1
-user_2
-mode
-start_time
-end_time
-status
-
-(No message persistence collection for MVP)
-
-6. Matching Algorithm (Cloud Function)
-
-Receive initial message
-
-Run sentiment classifier
-
-Assign sentiment label
-
-Check queue for compatible user
-
-If found:
-
-Create session
-
-Notify both users
-
-If not:
-
-Add user to queue
-
-7. Security Design
-
-Firebase Auth token validation
-
-No permanent chat storage
-
-Rate limiting per user
-
-Abuse auto-termination
-
+Push notifications (optional future)

@@ -1,0 +1,53 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(uid) {
+      return signedIn() && request.auth.uid == uid;
+    }
+
+    function roomDoc(roomId) {
+      return get(/databases/$(database)/documents/chatRooms/$(roomId));
+    }
+
+    function isRoomParticipant(roomId) {
+      return signedIn() && (
+        request.auth.uid in get(/databases/$(database)/documents/chatRooms/$(roomId)).data.users
+      );
+    }
+
+    match /users/{uid} {
+      allow read: if signedIn();
+      allow write: if isOwner(uid);
+    }
+
+    match /chatRooms/{roomId} {
+      allow create: if signedIn();
+      // Use resource == null for create/existence checks, and uid in users for access
+      allow read, update: if signedIn() && (
+        resource == null || request.auth.uid in resource.data.users
+      );
+      allow delete: if false; // Use status lifecycle instead
+
+      match /messages/{messageId} {
+        allow read, create: if isRoomParticipant(roomId);
+        allow update, delete: if false;
+      }
+    }
+
+    match /matchmaker/{docId} {
+      allow read, write: if signedIn();
+    }
+
+    match /incidentReports/{reportId} {
+      allow create: if signedIn()
+        && request.resource.data.roomId is string
+        && request.resource.data.reporterId == request.auth.uid;
+      allow read, update, delete: if false;
+    }
+  }
+}
