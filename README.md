@@ -32,7 +32,7 @@ The app is implemented as a React + Vite Progressive Web App with Firebase Auth,
 
 Important: Last Signal is a peer-connection product and not a replacement for professional mental health care.
 
-## Recruiter Snapshot
+## Project Snapshot
 
 This project demonstrates:
 - Product thinking: a clear behavioral concept translated into interaction design
