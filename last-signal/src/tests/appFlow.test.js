@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { appFlowReducer, buildDisconnectSummary, initialAppFlow } from '../lib/appFlow'
 
-// ─── initialAppFlow ────────────────────────────────────────────────────────────
+// ─── initialAppFlow ───────────────────────────────────────────────────────────
 
 describe('initialAppFlow', () => {
   it('starts on the hero screen', () => {
