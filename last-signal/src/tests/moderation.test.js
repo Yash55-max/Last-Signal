@@ -1,7 +1,7 @@
 import { describe, expect, it, beforeEach, vi, afterEach } from 'vitest'
 import { containsToxic, canSendMessage } from '../lib/moderation'
 
-// ─── containsToxic ─────────────────────────────────────────────────────────────
+// ─── containsToxic ────────────────────────────────────────────────────────────
 
 describe('containsToxic', () => {
     it('returns false for clean messages', () => {
